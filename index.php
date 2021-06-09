@@ -55,7 +55,7 @@
 		HomeController::home();
 	}, 'get', 'none', false);
 
-	Router::addMulti(['/([a-zA-Z0-9])/(j|s|p)/(.*)', '/([a-zA-Z0-9])/(j|s|p)/(.*)/'], function($user, $type, $name) {
+	Router::addMulti(['/([a-zA-Z0-9])/(j|s|p|g)/(.*)', '/([a-zA-Z0-9])/(j|s|p|g)/(.*)/'], function($user, $type, $name) {
 		ViewerController::findImage($user, $type, $name);
 	}, 'get', 'none', false);
 
