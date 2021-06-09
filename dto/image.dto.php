@@ -1,6 +1,8 @@
 <?php
 
     class ImageDto {
+		use \GetSetGo\SetterGetter;
+		
         public $id;
 
         public $link;

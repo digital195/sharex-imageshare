@@ -4,13 +4,7 @@
 
     private static $fileExtensionsAllowed = ['png','jpg', 'jpeg', 'gif', 'webm'];
 
-    public static function init() {
-
-    }
-
-    public static function uploadImage() {
-        $user = Auth::$currentUser;
-
+    public static function uploadImage($user) {
         $fileName = $_FILES['image']['name'];
         $saveName = $fileName;
         $urlName = explode('.', $fileName)[0];
@@ -38,15 +32,15 @@
 
         $size = getimagesize($fileTmpName);
         if (empty($size) || ($size[0] === 0) || ($size[1] === 0)) {
-            return Res::error(400, 'wrong-file-supplied', 'wrong file supplied, the file should not be emptry');
+            return Response::error(400, 'wrong-file-supplied', 'wrong file supplied, the file should not be emptry');
         }
 
         if (!in_array($fileExtension, self::$fileExtensionsAllowed)) {
-            return Res::error(400, 'wrong-file-supplied', 'wrong file supplied, the type is not allowed');
+            return Response::error(400, 'wrong-file-supplied', 'wrong file supplied, the type is not allowed');
         }
 
-        if ($fileSize > 30000000) {
-            return Res::error(400, 'file-to-big', 'the supplied file is to big, max 30mb');
+        if ($fileSize > 100000000) {
+            return Response::error(400, 'file-to-big', 'the supplied file is to big, max 100mb');
         }
 
         if ( file_exists(realpath($uploadPath)) ) {
@@ -58,15 +52,15 @@
         $success = move_uploaded_file($fileTmpName, $uploadPath);
 
         if (!$success) {
-          return Res::error(400, 'file-move-failed', 'file could not be moved, maybe permission issue');
+          return Response::error(400, 'file-move-failed', 'file could not be moved, maybe permission issue');
         }
 
-        $direct = SimpleRouter::getUrl() . $localPath . $saveName;
-        $link = SimpleRouter::getUrl() . $urlPath . $urlName;
+        $direct = Router::getUrl() . Router::getBaseUrl() . $localPath . $saveName;
+        $link = Router::getUrl() . Router::getBaseUrl() . $urlPath . $urlName;
 
         $image = new ImageDto(-1, $link, $direct, $fileExtension, $user->url, 'new', $user->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
 
-        Res::build(201, $image, 'CREATED');
+        Response::build(201, $image, 'CREATED');
     }
 
   }

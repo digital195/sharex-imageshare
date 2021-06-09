@@ -1,6 +1,7 @@
 <?php
 
 	class Config {
+		use \GetSetGo\SetterGetter;
 
 		private static $title = '';
 		private static $users = [];
@@ -18,48 +19,9 @@
 
 		public static function init() {
 		    // not-defined is the apiKey please change this
-			array_push(self::$users, new UserDto(1, 'user1', 'folder', 'url', 'not-defined', '', [], date("Y-m-d H:i:s"), date("Y-m-d H:i:s")) );
+			array_push(self::$users, new UserDto(1, 'username', 'user1', 'folder', 'url', 'not-defined', '', ['domain1', 'domain2'], date("Y-m-d H:i:s"), date("Y-m-d H:i:s")) );
 		}
 
-		public static function getUsers() {
-			return self::$users;
-		}
-
-		public static function getHost() {
-			return self::$host;
-		}
-
-		public static function getTitle() {
-			return self::$title;
-		}
-
-		public static function getHeaderColors() {
-			return self::$headerColors;
-		}
-
-		public static function getBackgroundColors() {
-			return self::$backgroundColors;
-		}
-
-		public static function getFontColor() {
-			return self::$fontColor;
-		}
-
-		public static function getLinkColor() {
-			return self::$linkColor;
-		}
-
-		public static function getImprint() {
-			return self::$imprint;
-		}
-
-		public static function getPrivacy() {
-			return self::$privacy;
-		}
-
-		public static function getCopyright() {
-			return self::$copyright;
-		}
 	}
 
 ?>

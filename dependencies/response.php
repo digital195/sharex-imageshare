@@ -1,6 +1,6 @@
 <?php
 
-  class Res {
+  class Response {
 
     public static function build($statusCode = 200, $data = null, $message = 'OK') {
       $response = new \stdClass();
@@ -42,6 +42,11 @@
     private static function buildJSON($stdClass) {
       return json_encode($stdClass);
     }
+
+    public static function buildTemplate($responseDto) {
+      include_once 'template/template.php';
+    }
+	
   }
 
 ?>

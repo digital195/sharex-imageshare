@@ -13,7 +13,7 @@
 				margin: 0;
 				padding: 0;
 				min-height: 100vh;
-				width: 100vw;
+				width: 100%;
 				font-family: var(--font);
 				font-weight: 300;
 				background: radial-gradient(ellipse at bottom, var(--bgColor) 0%, var(--bgColor2) 100%);
@@ -100,7 +100,6 @@
 			}
 
 			.image img {
-				min-height: 400px;
 			    max-width: 100%;
                 max-height: calc( 100vh - 260px );
                 cursor: pointer;
@@ -108,5 +107,53 @@
 			
 			.hidden {
 				display: none;
+			}
+			
+			.image-overview {
+				display: flex;
+				flex-wrap: wrap;
+				
+				width: 100%;
+			}
+			
+			.image-overview figure {
+				width: 320px;
+				height: 320px;
+				margin: 10px;
+			}
+			
+			.image-overview img {
+				margin: auto;
+				
+				max-height: 300px;
+				max-width: 300px;
+			}
+			
+			input {
+				width: 200px;
+				padding: 12px 20px;
+				margin: 8px 0;
+				display: inline-block;
+				border: solid #ccc 0.125em;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+			
+			input[type="submit"] {
+				width: 200px;
+				background-color: var(--linkColor);
+				border: solid var(--linkColor) 0.125em;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border-radius: 4px;
+				cursor: pointer;
+				transition-duration: .3s;
+			}
+			
+			input[type="submit"]:hover {
+				color: var(--linkColor);
+				border: solid var(--linkColor) 0.125em;
+				background-color: white;
 			}
 		</style>
