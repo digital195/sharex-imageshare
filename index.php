@@ -1,7 +1,7 @@
 <?php
 	define('DEBUG', false);
 	define('READONLY', true);
-	define('VERSION', '0.0.9');
+	define('VERSION', '0.1.0-rc');
 
 	if (DEBUG) {
 		ini_set('display_errors', 1);
@@ -55,7 +55,7 @@
 		HomeController::home();
 	}, 'get', 'none', false);
 
-	Router::addMulti(['/([a-zA-Z0-9])/(j|s|p|g)/(.*)', '/([a-zA-Z0-9])/(j|s|p|g)/(.*)/'], function($user, $type, $name) {
+	Router::addMulti(['\/(.*)\/(j|s|p|g)\/(.*)', '\/(.*)\/(j|s|p|g)\/(.*)\/'], function($user, $type, $name) {
 		ViewerController::findImage($user, $type, $name);
 	}, 'get', 'none', false);
 
@@ -71,7 +71,7 @@
 		AdminController::viewImages();
 	}, 'get', 'session', false);
 
-	Router::addMulti(['/upload', '/upload/', '/upload'], function($user) {
+	Router::addMulti(['/upload', '/upload/'], function($user) {
 		Router::json();
 		UploadController::uploadImage($user);
 	}, 'post', 'apiKey', false);

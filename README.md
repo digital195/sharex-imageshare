@@ -45,13 +45,13 @@ Also you must enter a domain on which the user is allowed to upload, you also ca
 
 Now you can use the new api key to upload images to your ImageShare.
 
-# Config generator
+## Config generator
 A config generator for this application is currently in the work by myself. When it is finished i will add a link that you can use it to create your config.php file.
 
-# View Uploaded Images
+## View Uploaded Images
 You can access a login page under `url/login` where you can use your username and apiKey to login. There you can view every image you have uploaded to his application. More features for this are in development.
 
-# Logo, Favicon
+## Logo, Favicon
 
 When you want to use a logo or a favicon you have to put them into the `static` folder:
 

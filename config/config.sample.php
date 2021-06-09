@@ -16,6 +16,8 @@
 		private static $backgroundColors = ['#ffff00', '#ff9933'];
 		private static $fontColor = '#333300';
 		private static $linkColor = '#ffffff';
+		
+		private static $csrfTokenSecret = 'zXN#twnrpOkG';
 
 		public static function init() {
 		    // not-defined is the apiKey please change this

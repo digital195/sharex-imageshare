@@ -15,7 +15,7 @@
 		}
 		
 		public static function buildLink($href, $content, $class = '', $blank = false ) {
-			return '<a href="' . $href . '"' . ($blank ? ' target="_blank"' : '') . '' . self::buildClass($class) .'>' . $content . '</a/>'; 
+			return '<a href="' . $href . '"' . ($blank ? ' target="_blank"' : '') . '' . self::buildClass($class) .'>' . $content . '</a>'; 
 		}
 		
 		public static function buildImage($src, $alt = '', $class = '') {
@@ -44,6 +44,10 @@
 
 		public static function buildFigCaption($content, $class = '') {
 			return '<figcaption' . self::buildClass($class) .'>' . $content . '</figcaption>';
+		}
+
+		public static function buildIcon($icon) {
+			return '<i class="' . $icon . '"></i>';
 		}
 		
 		private static function buildClass($class) {

@@ -14,7 +14,7 @@
 		
 		foreach (self::$fileTypes as &$type) {
 			if (!is_dir(getcwd() . '/static/' . $folder . '/' . $type . '/')) {
-				break;
+				continue;
 			}
 
 			$dir = new DirectoryIterator( getcwd() . '/static/' . $folder . '/' . $type . '/');
