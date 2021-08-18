@@ -39,6 +39,10 @@
       Log::write($statusCode);
     }
 
+    public static function buildOpenGraphInformation($title, $description, $image, $url) {
+      return new OpenGraphDto($title, $description, $image, $url);
+    }
+
     private static function buildJSON($stdClass) {
       return json_encode($stdClass);
     }

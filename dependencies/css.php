@@ -130,7 +130,7 @@
 			}
 			
 			input {
-				width: 200px;
+				width: 300px;
 				padding: 12px 20px;
 				margin: 8px 0;
 				display: inline-block;
@@ -140,7 +140,7 @@
 			}
 			
 			input[type="submit"] {
-				width: 200px;
+				width: 300px;
 				background-color: var(--linkColor);
 				border: solid var(--linkColor) 0.125em;
 				color: white;

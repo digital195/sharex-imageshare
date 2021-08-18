@@ -16,6 +16,17 @@
 
 		<meta http-equiv="refresh" content="3; url=<?php echo $responseDto->getRedirectTo(); ?>">
 			
+		<?php 
+			}
+
+			if ($responseDto->getOpenGraph() != null) { 
+		?>
+
+		<meta property="og:title" content="<?php echo $responseDto->getOpenGraph()->getTitle(); ?>">
+		<meta property="og:description" content="<?php echo $responseDto->getOpenGraph()->getDescription(); ?>">
+		<meta property="og:image" content="<?php echo $responseDto->getOpenGraph()->getImage(); ?>">
+		<meta property="og:url" content="<?php echo $responseDto->getOpenGraph()->getUrl(); ?>">
+		
 		<?php } ?>
 
 		<style>

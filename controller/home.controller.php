@@ -12,7 +12,7 @@
 		
 		$content =
 			Builder::buildSection(
-				Builder::buildText('Imageshare') .
+				Builder::buildText('ImageShare') .
 				Builder::buildLineBreak() .
 				Builder::buildLineBreak() .
 				Builder::buildText('A ShareX image hosting solution for your own domain', 'small') .

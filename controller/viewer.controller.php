@@ -34,10 +34,12 @@
 
         $image = new ImageDto(-1, $link, $direct, $type, $folder, 'new', $username, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
 
-        return Response::buildTemplate( self::imageFound($image) );
+		$openGraph = Response::buildOpenGraphInformation(Config::getTitle() . ' - ImageShare', 'A ShareX image hosting solution for your own domain', $direct, $link);
+
+        return Response::buildTemplate( self::imageFound($image, $openGraph) );
     }
 	
-	private static function imageFound($imageDto) {
+	private static function imageFound($imageDto, $openGraph = null) {
 		$response = new ResponseDto();
 		$response->setTitle('');
 		
@@ -56,6 +58,10 @@
 			);
 		
 		$response->setContent($content);
+		
+		if ($openGraph != null) {
+			$response->setOpenGraph($openGraph);
+		}
 		
 		return $response;
 	}

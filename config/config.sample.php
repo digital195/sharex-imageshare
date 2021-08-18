@@ -5,7 +5,7 @@
 
 		private static $title = '';
 		private static $users = [];
-		private static $host = '...';
+		private static $host = 's-loer.de';
 
 		private static $imprint = '';
 		private static $privacy = '';
@@ -17,7 +17,7 @@
 		private static $fontColor = '#333300';
 		private static $linkColor = '#ffffff';
 		
-		private static $csrfTokenSecret = 'zXN#twnrpOkG';
+		private static $csrfTokenSecret = 'hlk$vhn$jfü';
 
 		public static function init() {
 		    // not-defined is the apiKey please change this

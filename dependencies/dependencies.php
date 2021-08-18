@@ -25,6 +25,7 @@
 	include_once('dto/user.dto.php');
 	include_once('dto/image.dto.php');
 	include_once('dto/response.dto.php');
+	include_once('dto/open-graph.dto.php');
 	
 	include_once('controller/viewer.controller.php');
 	include_once('controller/upload.controller.php');
