@@ -96,7 +96,9 @@ Add this as a uploaders config in your shareX.
     "RegexList": [
         "[^,]*$"
     ],
-    "URL": "$json:data.link$"
+    "URL": "$json:data.link$",
+	"ThumbnailURL": "$json:data.direct$",
+	"ErrorMessage": "$json:message$"
 }
 ```
 

@@ -1,7 +1,7 @@
 <?php
 	define('DEBUG', false);
 	define('READONLY', true);
-	define('VERSION', '0.1.0');
+	define('VERSION', '0.1.1');
 
 	if (DEBUG) {
 		ini_set('display_errors', 1);
