@@ -32,7 +32,7 @@
             return Response::buildTemplate( self::noImageFound() );
         }
 
-        $image = new ImageDto(-1, $link, $direct, $type, $folder, 'new', $username, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
+        $image = new ImageDto(-1, $link, $direct, '', $type, $folder, 'new', $username, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
 
 		$openGraph = Response::buildOpenGraphInformation(Config::getTitle() . ' - ImageShare', 'A ShareX image hosting solution for your own domain', $direct, $link);
 

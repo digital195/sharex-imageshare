@@ -7,6 +7,7 @@
 
         public $link;
         public $direct;
+        public $preview;
         public $type;
         public $folder;
         public $notes;
@@ -16,12 +17,13 @@
         public $createdAt;
         public $updatedAt;
 
-        public function __construct($id, $link, $direct, $type, $folder, $notes, $user, $createdAt, $updatedAt) {
+        public function __construct($id, $link, $direct, $preview, $type, $folder, $notes, $user, $createdAt, $updatedAt) {
             // parent::__construct();
             $this->id = Security::sanitize($id);
 
             $this->link = Security::sanitize($link);
             $this->direct = Security::sanitize($direct);
+            $this->preview = Security::sanitize($preview);
             $this->type = Security::sanitize($type);
             $this->folder = Security::sanitize($folder);
             $this->notes = Security::sanitize($notes);

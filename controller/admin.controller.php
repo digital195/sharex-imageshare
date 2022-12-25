@@ -11,6 +11,7 @@
 		$folder = $user->folder;
 		$url = $user->url;
 		$id = 1;
+		$currentDirectory = getcwd();
 		
 		foreach (self::$fileTypes as &$type) {
 			if (!is_dir(getcwd() . '/static/' . $folder . '/' . $type . '/')) {
@@ -30,6 +31,11 @@
 			foreach ($dir as $fileInfo) {
 				if (!$fileInfo->isDot()) {
 					$fileName = $fileInfo->getFilename();
+
+					if ($fileName == 'preview') {
+						continue;
+					}
+
 					$urlName = explode('.', $fileName)[0];
 					$createdAt = date("F d Y H:i:s.", $fileInfo->getCTime());
 					$updatedAt = date("F d Y H:i:s.", $fileInfo->getATime());
@@ -37,11 +43,24 @@
 					
 					$direct = Router::getUrl() . Router::getBaseUrl() . $localPath . $fileName;
 					$link = Router::getUrl() . Router::getBaseUrl() . $urlPath . $urlName;
-										
-					$imageDto = new ImageDto($id, $link, $direct, $extension, $folder, $fileName, $user->title, $createdAt, $updatedAt);
+					$preview = Router::getUrl() . Router::getBaseUrl() . $localPath . 'preview/' . $fileName;			
 
-					array_push($imageDtos, $imageDto);
+        			$previewDirectory = $currentDirectory . $localPath . '/preview/';
+					$filePath = $currentDirectory . $localPath . '/' . $fileName;
+        			$previewFilePath = $currentDirectory . $localPath . '/preview/' . $fileName;
+
+					$imageDto = new ImageDto($id, $link, $direct, $preview, $extension, $folder, $fileName, $user->title, $createdAt, $updatedAt);
+
+					if (!file_exists(realpath($previewFilePath)) ) {
+						if (!is_dir($previewDirectory)) {
+							mkdir($previewDirectory, 0755, true);
+						}
+
+						Image::resize($filePath, $previewFilePath, 300);
+					}
 					
+					array_push($imageDtos, $imageDto);
+
 					$id++;
 				}
 			}
@@ -62,7 +81,7 @@
 				Builder::buildLink(
 					$imageDtos[$i]->link,
 					Builder::buildImage(
-						$imageDtos[$i]->direct,
+						$imageDtos[$i]->preview,
 						$imageDtos[$i]->notes
 					),
 					'',

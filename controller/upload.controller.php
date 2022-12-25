@@ -58,7 +58,7 @@
         $direct = Router::getUrl() . Router::getBaseUrl() . $localPath . $saveName;
         $link = Router::getUrl() . Router::getBaseUrl() . $urlPath . $urlName;
 
-        $image = new ImageDto(-1, $link, $direct, $fileExtension, $user->url, 'new', $user->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
+        $image = new ImageDto(-1, $link, $direct, '', $fileExtension, $user->url, 'new', $user->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s") );
 
         Response::build(201, $image, 'CREATED');
     }
